@@ -1,0 +1,16 @@
+[
+   {
+      "email": "testsing@tesstisngass.com",
+      "firstName": "Juan2",
+      "lastName": "Test",
+      "password": "$2b$10$WnP81OZzCxgPNEINweEp3.qBUhJcY5iC3va4a/P400VpQWftYdFfi",
+      "token": ""
+   },
+   {
+      "email": "testsing@tesstisngass.scom",
+      "firstName": "Juan2",
+      "lastName": "Test",
+      "password": "$2b$10$HQa4emPxS5mfId87OjDhfuBKJaOVfzdeBNiTzo/KwoHi9NX4u9CVG",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RzaW5nQHRlc3N0aXNuZ2Fzcy5zY29tIiwiaWF0IjoxNjQ2NzY2NzU4LCJleHAiOjE2NDY3NzM5NTh9.xD8dGTR0iArw0zCcgsZvw7VhbVypV9SCn4PL0Q6KiaY"
+   }
+]
