@@ -3,14 +3,42 @@
       "email": "testsing@tesstisngass.com",
       "firstName": "Juan2",
       "lastName": "Test",
-      "password": "$2b$10$WnP81OZzCxgPNEINweEp3.qBUhJcY5iC3va4a/P400VpQWftYdFfi",
-      "token": ""
+      "password": "$2b$10$WnP81OZzCxgPNEINweEp3.qBUhJcY5iC3va4a/P400VpQWftYdFfi"
    },
    {
       "email": "testsing@tesstisngass.scom",
       "firstName": "Juan2",
       "lastName": "Test",
-      "password": "$2b$10$HQa4emPxS5mfId87OjDhfuBKJaOVfzdeBNiTzo/KwoHi9NX4u9CVG",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RzaW5nQHRlc3N0aXNuZ2Fzcy5zY29tIiwiaWF0IjoxNjQ2NzY2NzU4LCJleHAiOjE2NDY3NzM5NTh9.xD8dGTR0iArw0zCcgsZvw7VhbVypV9SCn4PL0Q6KiaY"
+      "password": "$2b$10$HQa4emPxS5mfId87OjDhfuBKJaOVfzdeBNiTzo/KwoHi9NX4u9CVG"
+   },
+   {
+      "email": "juan@juanitoweb.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$VA6kE6.HCneETDw0mTned.IFgrNW8.GE2A.U754yRRQ7TE6fIS1p."
+   },
+   {
+      "email": "juan@juanitowebs.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$y/yczsx4SPw4LXbtG.dyDO9kti5SXqZHVhYIBjtXmRyEZATK2Qe8e"
+   },
+   {
+      "email": "juan@jusanitowebs.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$D5MrnpANXNtop9AgFTBMzumadgDFEIhGNzcZLHnrtsq3VguRo6qXu"
+   },
+   {
+      "email": "juan@jusanitowsebs.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$HA3FEMFqvuMLL2E.rZjy8eaaRtxsf6T1xW8tWh9KfGkH2aNWTRHN."
+   },
+   {
+      "email": "juddan@jusanitowsebs.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$wdmE3C26.wLkrn5ocx416.q3rMOD.M8znGIr0K7Colhkaxw8KFsEC"
    }
 ]

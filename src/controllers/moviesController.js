@@ -1,29 +1,33 @@
+// moviesController.js
+// Controller de movies
+
 // Utilizo axios para hacer request a url externas
 const axios = require('axios');
+
 
 // URL donde hago el request de las peliculas
 const getMoviesURL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc?&api_key=';
 
-// Api Key generada de IMDB
-const IMDBApiKey = '2af772df821443ec882252df3de8957b';
-
 const moviesController = {};
 
+/**
+* Funcion que consulta en IMDB las peliculas mas populares y las retorna.
+* Opcional: las filtra por el campo "title" segun la keyword pasada como parámetro
+*/
+moviesController.getMovies = async function(request,response) {
 
-moviesController.getMovies = function(request,response) {
-    // 
-    if (request.query.keyword !== undefined)
-        console.log(request.query.keyword)
-    else
-        console.log("vacio");
-    // Obtengo las peliculas
-    axios.get(getMoviesURL.concat(IMDBApiKey)).then( function(res){
+    // Obtengo las peliculas de IMDB
+    await axios.get(getMoviesURL.concat(process.env.IMDB_APIKEY)).then( function(res){
             // Obtengo los resultados de la query
-            const movies = res.data.results;
+            var movies = res.data.results;
+
+            // Si se envio el parametro de filtro keyword
+            if (request.query.keyword)
+                // Filtro las peliculas segun su title
+                movies = movies.filter(movie  => movie.title.includes(request.query.keyword));
             
-            // Itero sobre ellos
             for(movie of movies) {
-                // Agrego el campo suggestionScore con un valor random (0..99)
+                // Itero sobre las peliculas y agrego el campo suggestionScore con un valor random (0..99)
                 movie.suggestionScore = Math.floor(Math.random() * 100);
             }
             
@@ -33,7 +37,7 @@ moviesController.getMovies = function(request,response) {
             // Devuelvo los resultados en formato JSON
             response.json(movies);
 
-        })
+    })
     .catch(err => {
       console.log('Error: ', err.message);
     });
