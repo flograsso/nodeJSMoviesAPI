@@ -102,12 +102,12 @@ favouritesController.getMovies = async (req, res) => {
         var userFavorites = favourites[foundIndex].movies;
 
         for(movie of userFavorites) {
-            // Itero sobre las peliculas y agrego el campo suggestionScore con un valor random (0..99)
-            movie.suggestionScore = Math.floor(Math.random() * 100);
+            // Itero sobre las peliculas y agrego el campo suggestionForTodayScore con un valor random (0..99)
+            movie.suggestionForTodayScore = Math.floor(Math.random() * 100);
         }
 
-        // Ordeno de forma descendente por campo suggestionScore
-        userFavorites.sort(function(a, b){return a.suggestionScore - b.suggestionScore});
+        // Ordeno de forma descendente por campo suggestionForTodayScore
+        userFavorites.sort(function(a, b){return a.suggestionForTodayScore - b.suggestionForTodayScore});
             
         // Devuelvo los resultados en formato JSON
         res.json(userFavorites);
