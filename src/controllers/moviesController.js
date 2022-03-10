@@ -39,6 +39,7 @@ moviesController.getMovies = async function(request,response) {
     })
     .catch(err => {
       console.log('Error: ', err.message);
+      return res.status(400).json(JSON.parse('{"message":"Error"}'))
     });
 
 }

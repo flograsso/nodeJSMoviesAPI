@@ -30,7 +30,7 @@ usersController.authUser = async (req, response) => {
         const { email, password } = req.body;
         const user = await userExist(email); // Me traigo valores del usuario en DB
         if ((user == undefined))
-            return response.status(400).json(JSON.parse('{"message":"'.concat("User not exists"). concat('"}')))
+            return res.status(400).json(JSON.parse('{"message":"User not exists"}'))
 
         else
             {
@@ -54,17 +54,16 @@ usersController.authUser = async (req, response) => {
                     }
                     else 
                     {
-                        return response.status(400).json(JSON.parse('{"message":"'.concat("Incorrect password"). concat('"}')))
+                        return res.status(400).json(JSON.parse('{"message":"Incorrect password"}'))
                     }
                     
                         
                 });                  
             }
- 
-       
         } 
         catch(err) {
             console.log(err)
+            return res.status(400).json(JSON.parse('{"message":"Error"}'))
         }
 }
 
@@ -80,7 +79,7 @@ usersController.createUser = async (req, res) => {
         }
         const user = await userExist(req.body.email) // Valido existencia del email
         if (user !== undefined)
-            return res.status(409).json(JSON.parse('{"message":"'.concat("User already exists"). concat('"}'))) // SI el email ya existe no lo registro
+        return res.status(400).json(JSON.parse('{"message":"User already exists"}'))// SI el email ya existe no lo registro
 
         else
         {
@@ -88,12 +87,13 @@ usersController.createUser = async (req, res) => {
                 req.body.password = hash;
                 await fsPush(process.env.USERS_FILE_PATH,req.body) //Guardo el user en DB con la password hasheada
             });
-            return res.status(201).json(JSON.parse('{"message":"'.concat("User created successfully"). concat('"}'))) 
+            return res.status(201).json(JSON.parse('{"message":"User created successfully"}'))
         }
 
         } 
         catch(err) {
             console.log(err)
+            return res.status(400).json(JSON.parse('{"message":"Error"}'))
         }
 }
 
@@ -105,11 +105,18 @@ usersController.createUser = async (req, res) => {
 * @return   {Objet}             retorna el usuario buscado (si existe)
 */
 async function userExist(email){
-    const data = await fsRead(process.env.USERS_FILE_PATH); // Leo la DB de users
-    const filteredResult = data.find((e) => e.email == email); // Filtro por email (identificador del user) 
+    try
+    {
+        const data = await fsRead(process.env.USERS_FILE_PATH); // Leo la DB de users
+        const filteredResult = data.find((e) => e.email == email); // Filtro por email (identificador del user) 
 
-    // Si obtengo un resultado del filtro, retorno un objeto con los datos del usuario. Sino el objeto es indefinido.
-    return filteredResult 
+        // Si obtengo un resultado del filtro, retorno un objeto con los datos del usuario. Sino el objeto es indefinido.
+        return filteredResult 
+    }
+    catch (err) {
+        console.log('Error: ', err.message);
+    }
+
 }
 
 

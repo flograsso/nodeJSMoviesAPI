@@ -12,10 +12,10 @@ const filesystem = {};
 * @param    {JSON} content      datos a agregar en formato JSON
 */
 filesystem.fsPush = async function (path, content){
-    readed = await filesystem.fsRead(path); // Leo el archivo
-    readed.push(content);   // Agrego el contenido
-    readed = JSON.stringify(readed,null,"   ") // Convierto a JSON 
     try {
+        readed = await filesystem.fsRead(path); // Leo el archivo
+        readed.push(content);   // Agrego el contenido
+        readed = JSON.stringify(readed,null,"   ") // Convierto a JSON 
         await fs.writeFile(path, readed); // Escribo en archivo
     }  
     catch(err) {

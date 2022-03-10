@@ -58,5 +58,11 @@
       "firstName": "Juan",
       "lastName": "Juanito",
       "password": "$2b$10$oPV12ifUtZQzA8OyCOnj9O0wnyBkqZqxo1ajtVzH/87ippZ86u9oy"
+   },
+   {
+      "email": "federico@federico.com",
+      "firstName": "Federico",
+      "lastName": "Federico2",
+      "password": "$2b$10$JRHmiEec2td4COox1on0le8rvABR.7W2Hwr7dKBT8bN4QcG2e8C.K"
    }
 ]

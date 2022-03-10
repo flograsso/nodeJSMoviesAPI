@@ -48,6 +48,35 @@
             "overview": "blabla",
             "id": 5,
             "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Harry Potter",
+            "overview": "Wizard Movie",
+            "id": 1,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Harry Potter 2",
+            "overview": "Wizard Movie",
+            "id": 2,
+            "addedAt": "10/03/2022"
+         }
+      ]
+   },
+   {
+      "email": "federico@federico.com",
+      "movies": [
+         {
+            "title": "Harry Potter",
+            "overview": "Wizard Movie",
+            "id": 1,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Harry Potter 2",
+            "overview": "Wizard Movie",
+            "id": 2,
+            "addedAt": "10/03/2022"
          }
       ]
    }

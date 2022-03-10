@@ -13,60 +13,69 @@ const favouritesController = {};
 */
 favouritesController.addMovie = async (req, res) => {
 
-    const errors = validationResult(req); // Busco errores de validacion
-    if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
-    }
-
-    // Tomo el id del user que hizo el request
-    const email = res.locals.email;
-
-    var newMovie = req.body;
-
-    // Leo todo el archivo de favoritos
-    const favourites = await fsRead(process.env.FAVOURITES_FILE_PATH); 
-
-    // Busco en el archivo de favoritos un objeto con el email de usuario
-    var foundIndex = favourites.findIndex(x => x.email == email);
-
-    // Si el usuario esta en la base de favoritos
-    if (foundIndex !== -1)
+    try
     {
-        // Me quedo con el array de favoritos
-        var userFavorites = favourites[foundIndex].movies;
-
-        // Busco el id de la pelicula a registrar en el arreglo
-        var movieId = userFavorites.findIndex(x => x.id == newMovie.id);
-
-        // Si el ID ya existe
-        if (movieId !== -1)
-            return res.status(400).json(JSON.parse('{"message":"'.concat("Movie ID already exists"). concat('"}')))
-        else //Si el ID no existe
-            {
-                // Agrego la fecha actual
-                newMovie.addedAt = getActualDDMMAAAA();
-
-                // Guardo en el objeto
-                userFavorites.push(req.body);
-
-                // Reemplazo el array de favoritos por el nuevo con la pelicula agregada
-                favourites.movies = userFavorites;
-            }
-    }
-    else // Si el usuario no esta en la base de favoritos
-        {   
-            var newUser = {}
-            newUser.email = email;
-            newMovie.addedAt = getActualDDMMAAAA();
-            newUser.movies = [];
-            newUser.movies[0] = newMovie;
-
-            favourites.push(newUser)
+        const errors = validationResult(req); // Busco errores de validacion
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
         }
 
-    // Guardo en archivo
-    await fsWrite(process.env.FAVOURITES_FILE_PATH ,favourites);
-    return res.status(201).json(JSON.parse('{"message":"Movie added to favourites"}'));
+        // Tomo el id del user que hizo el request
+        const email = res.locals.email;
+
+        console.log(email)
+
+        var newMovie = req.body;
+
+        // Leo todo el archivo de favoritos
+        const favourites = await fsRead(process.env.FAVOURITES_FILE_PATH); 
+
+        // Busco en el archivo de favoritos un objeto con el email de usuario
+        var foundIndex = favourites.findIndex(x => x.email == email);
+
+        // Si el usuario esta en la base de favoritos
+        if (foundIndex !== -1)
+        {
+            // Me quedo con el array de favoritos
+            var userFavorites = favourites[foundIndex].movies;
+
+            // Busco el id de la pelicula a registrar en el arreglo
+            var movieId = userFavorites.findIndex(x => x.id == newMovie.id);
+
+            // Si el ID ya existe
+            if (movieId !== -1)
+                return res.status(400).json(JSON.parse('{"message":"Movie ID already exists"}'))
+            else //Si el ID no existe
+                {
+                    // Agrego la fecha actual
+                    newMovie.addedAt = getActualDDMMAAAA();
+
+                    // Guardo en el objeto
+                    userFavorites.push(req.body);
+
+                    // Reemplazo el array de favoritos por el nuevo con la pelicula agregada
+                    favourites.movies = userFavorites;
+                }
+        }
+        else // Si el usuario no esta en la base de favoritos
+            {   
+                var newUser = {}
+                newUser.email = email;
+                newMovie.addedAt = getActualDDMMAAAA();
+                newUser.movies = [];
+                newUser.movies[0] = newMovie;
+
+                favourites.push(newUser)
+            }
+
+        // Guardo en archivo
+        await fsWrite(process.env.FAVOURITES_FILE_PATH ,favourites);
+        return res.status(201).json(JSON.parse('{"message":"Movie added to favourites"}'));
+    }
+    catch (err) {
+        console.log('Error: ', err.message);
+        return res.status(400).json(JSON.parse('{"message":"Error"}'))
+    }
 }
 
 /**
@@ -77,6 +86,8 @@ favouritesController.getMovies = async (req, res) => {
 
     // Tomo el id del user que hizo el request
     const email = res.locals.email;
+
+    console.log(email)
 
     // Leo todo el archivo de favoritos
     const favourites = await fsRead(process.env.FAVOURITES_FILE_PATH); 
@@ -102,7 +113,8 @@ favouritesController.getMovies = async (req, res) => {
         res.json(userFavorites);
     }
     else // Si el usuario no esta en la base de favoritos
-        return response.status(400).json(JSON.parse('{"message":"'.concat("User not exists"). concat('"}')))
+        return res.status(400).json(JSON.parse('{"message":"User not exists"}'))
+        
 
     
 }
