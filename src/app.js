@@ -16,6 +16,9 @@ process.env.AUTH_TOKEN_KEY = '2jje7dhd2es93jf'
 // Path del archivo de usuarios
 process.env.USERS_FILE_PATH = 'src/data/users.txt'
 
+// Path del archivo de peliculas favoritas
+process.env.FAVOURITES_FILE_PATH = 'src/data/favourites.txt'
+
 // API key de IMDB
 process.env.IMDB_APIKEY = '2af772df821443ec882252df3de8957b';
 

@@ -15,7 +15,8 @@ validate = function(method,req) {
                 body('firstName', 'Invalid first name').exists(),
                 body('lastName', 'Invalid second name').exists(),
                 body('email', 'Invalid email').exists().isEmail(),
-                body('password', 'Invalid password').exists()
+                body('password', 'Invalid password').exists(),
+                body('password', 'Password too short. Min 10 characters').isLength({ min: 10 })
                     ]   
         }
         case 'authUser': {
@@ -24,6 +25,13 @@ validate = function(method,req) {
                 body('password', 'Invalid password').exists(),
                     ]   
             }
+        case 'createFavouriteMovie': {
+            return  [ 
+                body('title', 'Invalid title').exists(),
+                body('overview', 'Invalid overview').exists(),
+                body('id', 'Invalid id').exists(),
+                        ]   
+                }
         }   
 }
 

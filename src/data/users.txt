@@ -40,5 +40,23 @@
       "firstName": "Juan",
       "lastName": "Juanito",
       "password": "$2b$10$wdmE3C26.wLkrn5ocx416.q3rMOD.M8znGIr0K7Colhkaxw8KFsEC"
+   },
+   {
+      "email": "juddan@jusanitowsesbs.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$PAcOSFvjgbE33CDGVoXBp.uHwnqEmq8vWz1t7No6JwYqCj7XwwZcK"
+   },
+   {
+      "email": "juan2@juanitoweb.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$my6niqrWOEw2tO1gc1QYUexm6er3reCJh.5GQ1wcfu5hCG3fszwmu"
+   },
+   {
+      "email": "federico@juanitoweb.com",
+      "firstName": "Juan",
+      "lastName": "Juanito",
+      "password": "$2b$10$oPV12ifUtZQzA8OyCOnj9O0wnyBkqZqxo1ajtVzH/87ippZ86u9oy"
    }
 ]

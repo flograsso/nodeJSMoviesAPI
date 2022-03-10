@@ -25,15 +25,16 @@ usersController.authUser = async (req, response) => {
         const errors = validationResult(req); // Busco errores de validacion
         if (!errors.isEmpty()) {
             console.log("Error")
-            response.status(422).json({ errors: errors.array() });
-            return;
+            return response.status(422).json({ errors: errors.array() });
         }
         const { email, password } = req.body;
-        const user = await userExist(email); // Valido existencia del email
+        const user = await userExist(email); // Me traigo valores del usuario en DB
         if ((user == undefined))
-            response.status(400).send("User not exists") 
+            return response.status(400).json(JSON.parse('{"message":"'.concat("User not exists"). concat('"}')))
+
         else
             {
+                var responseTxt;
                 // Comparo hash guardado en archivo con hash de la password del request
                 bcrypt.compare(password,user.password, async function(err, res) { 
                     if (res == true)
@@ -49,10 +50,12 @@ usersController.authUser = async (req, response) => {
                             }
                         );
                         // Envio token
-                        response.status(200).json(JSON.parse('{"access-token":"'.concat(token). concat('"}')))
+                        return response.status(200).json(JSON.parse('{"access-token":"'.concat(token). concat('"}')))
                     }
                     else 
-                        response.status(400).send("Incorrect password") 
+                    {
+                        return response.status(400).json(JSON.parse('{"message":"'.concat("Incorrect password"). concat('"}')))
+                    }
                     
                         
                 });                  
@@ -73,19 +76,19 @@ usersController.createUser = async (req, res) => {
     try {
         const errors = validationResult(req); // Busco errores de validacion
         if (!errors.isEmpty()) {
-            res.status(422).json({ errors: errors.array() });
-            return;
+            return res.status(422).json({ errors: errors.array() });
         }
         const user = await userExist(req.body.email) // Valido existencia del email
         if (user !== undefined)
-            res.status(409).send("User already exists") // SI el email ya existe no lo registro
+            return res.status(409).json(JSON.parse('{"message":"'.concat("User already exists"). concat('"}'))) // SI el email ya existe no lo registro
+
         else
         {
             bcrypt.hash(req.body.password, saltRounds, async (err, hash) => { // Hasheo la password
                 req.body.password = hash;
                 await fsPush(process.env.USERS_FILE_PATH,req.body) //Guardo el user en DB con la password hasheada
             });
-            res.status(201).send("User created successfully") 
+            return res.status(201).json(JSON.parse('{"message":"'.concat("User created successfully"). concat('"}'))) 
         }
 
         } 

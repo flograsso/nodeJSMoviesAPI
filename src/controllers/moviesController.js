@@ -15,7 +15,6 @@ const moviesController = {};
 * Opcional: las filtra por el campo "title" segun la keyword pasada como parámetro
 */
 moviesController.getMovies = async function(request,response) {
-
     // Obtengo las peliculas de IMDB
     await axios.get(getMoviesURL.concat(process.env.IMDB_APIKEY)).then( function(res){
             // Obtengo los resultados de la query

@@ -1,0 +1,54 @@
+[
+   {
+      "email": "juan2@juanitoweb.com",
+      "movies": [
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 3,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 1,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 2,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 4,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 5,
+            "addedAt": "10/03/2022"
+         }
+      ]
+   },
+   {
+      "email": "federico@juanitoweb.com",
+      "movies": [
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 4,
+            "addedAt": "10/03/2022"
+         },
+         {
+            "title": "Example",
+            "overview": "blabla",
+            "id": 5,
+            "addedAt": "10/03/2022"
+         }
+      ]
+   }
+]
