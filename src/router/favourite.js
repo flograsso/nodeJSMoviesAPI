@@ -35,7 +35,7 @@ router.post('/add',
         - Method: API KEY
         - Key: access-token
     Return:
-        - resultado de la creacion de usuario
+        - Listado de peliculas favoritas de usuario (JSON)
 */
 router.get('/list', 
             verifyToken,
